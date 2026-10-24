@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>One moment…</title>
+<style>body { font: 16px/1.5 system-ui, sans-serif; max-width: 40rem; margin: 3rem auto; padding: 0 1rem; color: #222; background: #fff; }</style>
+</head>
+<body>
+<p id="msg">Starting the image server in your browser…</p>
+<script>
+// GitHub Pages has no file at this address. If it is a IIIF address, install the
+// service worker that computes IIIF images, then load the address again (once).
+const BASE = '/iiif-test/';
+const key = 'iiif-retry:' + location.href;
+const msg = (text) => { document.getElementById('msg').innerHTML = text; };
+if (!('serviceWorker' in navigator)) {
+  msg('This browser cannot run the image server (no service workers).');
+} else if (sessionStorage.getItem(key)) {
+  sessionStorage.removeItem(key);
+  msg(`Nothing here. Back to <a href="${BASE}">the start page</a>.`);
+} else {
+  navigator.serviceWorker.register(BASE + 'sw.js', { scope: BASE })
+    .then(() => navigator.serviceWorker.ready)
+    .then(() => { sessionStorage.setItem(key, '1'); location.reload(); });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IIIF on GitHub Pages</title>
+<style>
+  :root { --fg: #1f2328; --muted: #59636e; --line: #d1d9e0; --bg: #fff; --code: #f6f8fa; --accent: #0b5cad; }
+  @media (prefers-color-scheme: dark) {
+    :root { --fg: #e6edf3; --muted: #9198a1; --line: #3d444d; --bg: #0d1117; --code: #151b23; --accent: #4493f8; }
+  }
+  body { font: 16px/1.55 system-ui, sans-serif; color: var(--fg); background: var(--bg); max-width: 52rem; margin: 2rem auto; padding: 0 16px; }
+  h1 { font-size: 1.6rem; margin-bottom: .2rem; }
+  h2 { font-size: 1.15rem; margin-top: 2rem; border-bottom: 1px solid var(--line); padding-bottom: .3rem; }
+  .muted { color: var(--muted); }
+  a { color: var(--accent); }
+  code { background: var(--code); padding: .1rem .3rem; border-radius: 4px; font-size: .9em; word-break: break-all; }
+  table { border-collapse: collapse; width: 100%; font-size: .95rem; }
+  td, th { border-bottom: 1px solid var(--line); padding: .4rem .5rem; text-align: left; vertical-align: top; }
+  #status { display: inline-block; padding: .2rem .6rem; border-radius: 999px; border: 1px solid var(--line); font-size: .9rem; }
+  .builder { display: grid; grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); gap: .6rem; }
+  .builder label { display: flex; flex-direction: column; font-size: .85rem; color: var(--muted); }
+  .builder input, .builder select { font: inherit; color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: .35rem .5rem; }
+  #url { display: block; margin: .8rem 0; }
+  #preview { max-width: 100%; max-height: 28rem; border: 1px solid var(--line); background: repeating-conic-gradient(var(--code) 0 25%, var(--bg) 0 50%) 0 0 / 16px 16px; }
+</style>
+</head>
+<body>
+<h1>IIIF on GitHub Pages</h1>
+<p class="muted">Text as Data 2026–27 · a test with the staff copies W, X and G of the Class Tradition</p>
+
+<p>GitHub Pages can only serve files that exist. A IIIF image server computes every image you ask for: any region, size, rotation and quality. Here a small script in <em>your browser</em> (a <a href="sw.js">service worker</a>) plays the server: it loads the full scan once and computes the rest. Image server: <span id="status">starting…</span></p>
+
+<h2>Try an address</h2>
+<p>The Image API address has a fixed order: <code>{identifier}/{region}/{size}/{rotation}/{quality}.{format}</code>. Change a part, and see what comes back.</p>
+<div class="builder">
+  <label>identifier
+    <select id="id">
+      <option>W_r</option><option>W_v</option><option>X_r</option><option>X_v</option><option>G_r</option><option>G_v</option>
+    </select>
+  </label>
+  <label>region <input id="region" value="full"></label>
+  <label>size <input id="size" value="600,"></label>
+  <label>rotation <input id="rotation" value="0"></label>
+  <label>quality
+    <select id="quality"><option>default</option><option>color</option><option>gray</option><option>bitonal</option></select>
+  </label>
+  <label>format
+    <select id="format"><option>jpg</option><option>png</option><option>webp</option></select>
+  </label>
+</div>
+<a id="url" href="#"></a>
+<img id="preview" alt="The image the address asks for">
+
+<h2>Examples</h2>
+<table>
+  <tr><th>What</th><th>Address (relative to this page)</th></tr>
+  <tr><td>Image information</td><td><a href="iiif/W_r/info.json"><code>iiif/W_r/info.json</code></a></td></tr>
+  <tr><td>The whole page, as large as it gets</td><td><a href="iiif/W_r/full/max/0/default.jpg"><code>iiif/W_r/full/max/0/default.jpg</code></a></td></tr>
+  <tr><td>The title lines, 800 pixels wide</td><td><a href="iiif/W_r/pct:5,4,90,9/800,/0/default.jpg"><code>iiif/W_r/pct:5,4,90,9/800,/0/default.jpg</code></a></td></tr>
+  <tr><td>A square from the middle, turned a quarter</td><td><a href="iiif/X_r/square/400,/90/default.jpg"><code>iiif/X_r/square/400,/90/default.jpg</code></a></td></tr>
+  <tr><td>The struck-through words on G, in grey</td><td><a href="iiif/G_r/pct:8,58,40,4/600,/0/gray.jpg"><code>iiif/G_r/pct:8,58,40,4/600,/0/gray.jpg</code></a></td></tr>
+  <tr><td>Black and white, as old OCR wanted it</td><td><a href="iiif/G_r/full/!500,500/0/bitonal.png"><code>iiif/G_r/full/!500,500/0/bitonal.png</code></a></td></tr>
+  <tr><td>Mirrored and upside down</td><td><a href="iiif/W_v/full/300,/!180/default.jpg"><code>iiif/W_v/full/300,/!180/default.jpg</code></a></td></tr>
+</table>
+
+<h2>A viewer</h2>
+<p>The <a href="manifest.json">manifest</a> lists the six pages and points to their image server. <a href="viewer.html">Open it in Mirador</a>: every tile you see while zooming is computed by the service worker.</p>
+
+<h2>What this cannot do</h2>
+<p>The server only exists in a browser that has visited this site. <code>curl</code>, Python's <code>requests</code>, Transkribus or a viewer on another website get a "not found": for them there is no image server here, only files.</p>
+
+<script>
+const BASE = new URL('.', location.href);
+const status = document.getElementById('status');
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js', { scope: './' })
+    .then(() => navigator.serviceWorker.ready)
+    .then(() => { status.textContent = 'running in this browser'; update(); });
+} else {
+  status.textContent = 'not available in this browser';
+}
+
+const fields = ['id', 'region', 'size', 'rotation', 'quality', 'format'].map((f) => document.getElementById(f));
+function update() {
+  const [id, region, size, rotation, quality, format] = fields.map((f) => f.value.trim());
+  const address = new URL(`iiif/${id}/${region}/${size}/${rotation}/${quality}.${format}`, BASE).href;
+  const link = document.getElementById('url');
+  link.href = address;
+  link.textContent = address;
+  document.getElementById('preview').src = address;
+}
+fields.forEach((f) => f.addEventListener('input', update));
+</script>
+</body>
+</html>

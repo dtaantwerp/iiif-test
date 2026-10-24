@@ -1,0 +1,251 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "id": "https://dtaantwerp.github.io/iiif-test/manifest.json",
+  "type": "Manifest",
+  "label": {
+    "en": [
+      "The Class Tradition: the staff copies W, X and G"
+    ]
+  },
+  "summary": {
+    "en": [
+      "Text as Data 2026-27, University of Antwerp. Three handwritten copies of a passage from Richard de Bury, Philobiblon, ch. XVII (trans. E. C. Thomas, 1888)."
+    ]
+  },
+  "items": [
+    {
+      "id": "https://dtaantwerp.github.io/iiif-test/canvas/G_r",
+      "type": "Canvas",
+      "label": {
+        "en": [
+          "G, recto"
+        ]
+      },
+      "width": 2526,
+      "height": 3556,
+      "items": [
+        {
+          "id": "https://dtaantwerp.github.io/iiif-test/canvas/G_r/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://dtaantwerp.github.io/iiif-test/canvas/G_r/image",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://dtaantwerp.github.io/iiif-test/canvas/G_r",
+              "body": {
+                "id": "https://dtaantwerp.github.io/iiif-test/iiif/G_r/full/max/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "width": 2526,
+                "height": 3556,
+                "service": [
+                  {
+                    "id": "https://dtaantwerp.github.io/iiif-test/iiif/G_r",
+                    "type": "ImageService3",
+                    "profile": "level2"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://dtaantwerp.github.io/iiif-test/canvas/G_v",
+      "type": "Canvas",
+      "label": {
+        "en": [
+          "G, verso"
+        ]
+      },
+      "width": 2527,
+      "height": 3557,
+      "items": [
+        {
+          "id": "https://dtaantwerp.github.io/iiif-test/canvas/G_v/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://dtaantwerp.github.io/iiif-test/canvas/G_v/image",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://dtaantwerp.github.io/iiif-test/canvas/G_v",
+              "body": {
+                "id": "https://dtaantwerp.github.io/iiif-test/iiif/G_v/full/max/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "width": 2527,
+                "height": 3557,
+                "service": [
+                  {
+                    "id": "https://dtaantwerp.github.io/iiif-test/iiif/G_v",
+                    "type": "ImageService3",
+                    "profile": "level2"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://dtaantwerp.github.io/iiif-test/canvas/W_r",
+      "type": "Canvas",
+      "label": {
+        "en": [
+          "W, recto"
+        ]
+      },
+      "width": 2523,
+      "height": 3561,
+      "items": [
+        {
+          "id": "https://dtaantwerp.github.io/iiif-test/canvas/W_r/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://dtaantwerp.github.io/iiif-test/canvas/W_r/image",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://dtaantwerp.github.io/iiif-test/canvas/W_r",
+              "body": {
+                "id": "https://dtaantwerp.github.io/iiif-test/iiif/W_r/full/max/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "width": 2523,
+                "height": 3561,
+                "service": [
+                  {
+                    "id": "https://dtaantwerp.github.io/iiif-test/iiif/W_r",
+                    "type": "ImageService3",
+                    "profile": "level2"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://dtaantwerp.github.io/iiif-test/canvas/W_v",
+      "type": "Canvas",
+      "label": {
+        "en": [
+          "W, verso"
+        ]
+      },
+      "width": 2518,
+      "height": 3555,
+      "items": [
+        {
+          "id": "https://dtaantwerp.github.io/iiif-test/canvas/W_v/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://dtaantwerp.github.io/iiif-test/canvas/W_v/image",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://dtaantwerp.github.io/iiif-test/canvas/W_v",
+              "body": {
+                "id": "https://dtaantwerp.github.io/iiif-test/iiif/W_v/full/max/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "width": 2518,
+                "height": 3555,
+                "service": [
+                  {
+                    "id": "https://dtaantwerp.github.io/iiif-test/iiif/W_v",
+                    "type": "ImageService3",
+                    "profile": "level2"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://dtaantwerp.github.io/iiif-test/canvas/X_r",
+      "type": "Canvas",
+      "label": {
+        "en": [
+          "X, recto"
+        ]
+      },
+      "width": 2524,
+      "height": 3551,
+      "items": [
+        {
+          "id": "https://dtaantwerp.github.io/iiif-test/canvas/X_r/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://dtaantwerp.github.io/iiif-test/canvas/X_r/image",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://dtaantwerp.github.io/iiif-test/canvas/X_r",
+              "body": {
+                "id": "https://dtaantwerp.github.io/iiif-test/iiif/X_r/full/max/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "width": 2524,
+                "height": 3551,
+                "service": [
+                  {
+                    "id": "https://dtaantwerp.github.io/iiif-test/iiif/X_r",
+                    "type": "ImageService3",
+                    "profile": "level2"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://dtaantwerp.github.io/iiif-test/canvas/X_v",
+      "type": "Canvas",
+      "label": {
+        "en": [
+          "X, verso"
+        ]
+      },
+      "width": 2524,
+      "height": 3554,
+      "items": [
+        {
+          "id": "https://dtaantwerp.github.io/iiif-test/canvas/X_v/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://dtaantwerp.github.io/iiif-test/canvas/X_v/image",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://dtaantwerp.github.io/iiif-test/canvas/X_v",
+              "body": {
+                "id": "https://dtaantwerp.github.io/iiif-test/iiif/X_v/full/max/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "width": 2524,
+                "height": 3554,
+                "service": [
+                  {
+                    "id": "https://dtaantwerp.github.io/iiif-test/iiif/X_v",
+                    "type": "ImageService3",
+                    "profile": "level2"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

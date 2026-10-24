@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Class Tradition in Mirador</title>
+<style>html, body { margin: 0; height: 100%; background: #fff; } #viewer { position: absolute; inset: 0; }</style>
+</head>
+<body>
+<div id="viewer"></div>
+<script src="https://unpkg.com/mirador@4.2.6/dist/mirador.min.js"></script>
+<script>
+// Mirador fetches info.json and the tiles from iiif/..., which only the service
+// worker can answer: make sure it controls this page before starting Mirador.
+async function start() {
+  await navigator.serviceWorker.register('sw.js', { scope: './' });
+  await navigator.serviceWorker.ready;
+  if (!navigator.serviceWorker.controller) { location.reload(); return; }
+  Mirador.viewer({
+    id: 'viewer',
+    windows: [{ manifestId: new URL('manifest.json', location.href).href, view: 'gallery' }],
+    window: { allowClose: false, sideBarOpen: true },
+    workspaceControlPanel: { enabled: false },
+  });
+}
+start();
+</script>
+</body>
+</html>
