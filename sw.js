@@ -139,6 +139,7 @@ async function image(id, region, size, rotation, qualityFormat) {
   const cw = Math.round(sw * cos + sh * sin), ch = Math.round(sw * sin + sh * cos);
   const canvas = new OffscreenCanvas(cw, ch);
   const ctx = canvas.getContext('2d', { willReadFrequently: quality === 'gray' || quality === 'bitonal' });
+  ctx.imageSmoothingQuality = 'high';  // smoother downscaling: less moiré on squared paper
   if (format === 'jpg') { ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, cw, ch); }  // jpg has no transparency
   ctx.translate(cw / 2, ch / 2);
   ctx.rotate(rad);
