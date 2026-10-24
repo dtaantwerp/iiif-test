@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Class Tradition in the Universal Viewer</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/universalviewer@4.4.4/dist/uv.css">
+<style>html, body { margin: 0; height: 100%; background: #000; } #uv { width: 100%; height: 100%; }</style>
+</head>
+<body>
+<div id="uv" class="uv"></div>
+<script src="https://cdn.jsdelivr.net/npm/universalviewer@4.4.4/dist/umd/UV.js"></script>
+<script>
+// The same manifest as in Mirador, in another viewer. The tiles again come from
+// the service worker, so it must control this page before the viewer starts.
+async function start() {
+  await navigator.serviceWorker.register('sw.js', { scope: './' });
+  await navigator.serviceWorker.ready;
+  if (!navigator.serviceWorker.controller) { location.reload(); return; }
+  UV.init('uv', { manifest: new URL('manifest.json', location.href).href, embedded: true });
+}
+start();
+</script>
+</body>
+</html>

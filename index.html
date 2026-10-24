@@ -65,7 +65,12 @@
 </table>
 
 <h2>A viewer</h2>
-<p>The <a href="manifest.json">manifest</a> lists the six pages and points to their image server. <a href="viewer.html">Open it in Mirador</a>: every tile you see while zooming is computed by the service worker.</p>
+<p>The <a href="manifest.json">manifest</a> lists the six pages and points to their image server. Any IIIF viewer can show it, and every tile you see while zooming is computed by the service worker:</p>
+<ul>
+  <li><a href="viewer.html">Mirador</a>, built for comparing pages and manuscripts side by side (Stanford, Harvard and others);</li>
+  <li><a href="uv.html">the Universal Viewer</a>, built for reading and browsing one object (the British Library, the Wellcome Collection and others).</li>
+</ul>
+<p>Same manifest, same images, two interfaces: that is what interoperability means.</p>
 
 <h2>What this cannot do</h2>
 <p>The server only exists in a browser that has visited this site. <code>curl</code>, Python's <code>requests</code>, Transkribus or a viewer on another website get a "not found": for them there is no image server here, only files.</p>
